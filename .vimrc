@@ -16,7 +16,7 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'vim-airline/vim-airline'
 Plugin 'benmills/vimux'
-Plugin '907th/vim-auto-save'
+Plugin 'chrisbra/vim-autosave'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'joshdick/onedark.vim'
 Plugin 'szymonmaszke/vimpyter' 
@@ -85,7 +85,8 @@ map <Leader>r :VimuxPromptCommand<CR>
 map <Leader>rr :VimuxRunLastCommand<CR>
 map <Leader>tz :VimuxZoomRunner<CR>
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
-let g:auto_save = 1
+let g:loaded_autosave = 1
+let g:autosave_timer = 60*1000*5
 nmap <leader>T :enew<cr>
 nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
