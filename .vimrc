@@ -2,44 +2,38 @@
 " Maintainer: Nathan Matare
 " Contact: nathan.matare@gmail.com
 
-" set the runtime path to include Vundle and initialize
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 call plug#begin('~/.vim/plugged')
 
-" plugins
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'jistr/vim-nerdtree-tabs'
+Plugin 'scrooloose/nerdtree'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'vim-airline/vim-airline'
-Plugin 'scrooloose/nerdtree'
-Bundle 'Valloric/YouCompleteMe'
-Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'benmills/vimux'
 Plugin '907th/vim-auto-save'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'joshdick/onedark.vim'
 Plugin 'szymonmaszke/vimpyter' 
-Bundle 'jistr/vim-nerdtree-tabs'
 Plugin 'tpope/vim-fugitive'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plugin 'fisadev/vim-isort'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'patstockwell/vim-monokai-tasty'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 call vundle#end()           
 call plug#end()
 filetype plugin indent on  
-
-" manage youcompleteme
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-" add split layout and combinations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -91,7 +85,6 @@ map <Leader>rr :VimuxRunLastCommand<CR>
 map <Leader>tz :VimuxZoomRunner<CR>
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 let g:auto_save = 1
-"https://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
 nmap <leader>T :enew<cr>
 nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
