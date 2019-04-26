@@ -9,9 +9,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 call plug#begin('~/.vim/plugged')
 
-" vundle for vim config
-Plugin 'gmarik/Vundle.vim'
-
 " plugins
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
@@ -34,10 +31,9 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'patstockwell/vim-monokai-tasty'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
-" all of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()           
 call plug#end()
+filetype plugin indent on  
 
 " manage youcompleteme
 let g:ycm_autoclose_preview_window_after_completion=1
@@ -48,7 +44,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-" color and theme setup
 "let g:vim_monokai_tasty_italic = 1
 "colorscheme vim-monokai-tasty
 "let g:airline_theme='monokai_tasty'
@@ -85,7 +80,7 @@ let NERDTreeShowHidden=1
 set splitright
 set foldlevel=99
 set foldmethod=indent
-let g:vim_isort_map = '<C-i>' "isort
+let g:vim_isort_map = '<C-i>' 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -96,15 +91,12 @@ map <Leader>rr :VimuxRunLastCommand<CR>
 map <Leader>tz :VimuxZoomRunner<CR>
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 let g:auto_save = 1
-
 "https://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
-" To open a new empty buffer
 nmap <leader>T :enew<cr>
 nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
 nmap <leader>bq :bp <BAR> bd #<CR>
 nmap <leader>bl :ls<CR>
-"juypternotebook
 autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
 autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
 autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
