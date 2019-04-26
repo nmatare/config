@@ -42,6 +42,7 @@ nnoremap <C-H> <C-W><C-H>
 "colorscheme vim-monokai-tasty
 "let g:airline_theme='monokai_tasty'
 colorscheme onedark
+set colorcolumn=80
 set background=dark
 set tabstop=4
 set textwidth=79
