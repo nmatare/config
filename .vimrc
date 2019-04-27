@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Yggdroot/indentLine'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
@@ -38,12 +39,17 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-"let g:vim_monokai_tasty_italic = 1
+" https://github.com/morhetz/gruvbox
 "colorscheme vim-monokai-tasty
+"let g:vim_monokai_tasty_italic = 1
 "let g:airline_theme='monokai_tasty'
 colorscheme onedark
+let g:onedark_terminal_italics = 1
+set term=xterm-256color
+let g:indentLine_bgcolor_term = 202
+let g:indentLine_bgcolor_gui = '#FF5F00'
 set colorcolumn=80
-set background=dark
+set background=light
 set tabstop=4
 set textwidth=79
 set softtabstop=4
@@ -68,7 +74,6 @@ set smartcase
 set incsearch
 set cursorline
 set hlsearch
-set termguicolors
 autocmd vimenter * NERDTree
 let g:nerdtree_tabs_open_on_console_startup=1 
 let NERDTreeShowHidden=1
@@ -80,13 +85,14 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#fnamemod = ':t'
 nnoremap <C-p> :Files<CR>
+nnoremap <silent> <C-l> :nohl<CR><C-l>
 let g:tmux_navigator_save_on_switch = 2
 map <Leader>r :VimuxPromptCommand<CR>
 map <Leader>rr :VimuxRunLastCommand<CR>
 map <Leader>tz :VimuxZoomRunner<CR>
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 let g:loaded_autosave = 1
-let g:autosave_timer = 60*1000*5
+let g:autosave_timer = 60*1000*1 " 1min
 nmap <leader>T :enew<cr>
 nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
