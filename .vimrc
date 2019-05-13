@@ -82,6 +82,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " Access and Misc
 syntax on
 set mouse=a
+set bs=2
 set encoding=utf8
 set number
 set swapfile
