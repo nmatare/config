@@ -47,7 +47,7 @@ set nowrap
 set textwidth=79
 autocmd filetype python setlocal expandtab shiftwidth=4 softtabstop=4
 autocmd filetype r setlocal expandtab shiftwidth=2 softtabstop=2
-autocmd filetype bash setlocal expandtab shiftwidth=2 softtabstop=2
+autocmd filetype sh setlocal expandtab shiftwidth=2 softtabstop=2
 
 let g:loaded_autosave = 1
 let g:autosave_timer = 60*1000*1 " 1min
