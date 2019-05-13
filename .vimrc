@@ -11,7 +11,6 @@ call plug#begin('~/.vim/plugged')
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Yggdroot/indentLine'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
