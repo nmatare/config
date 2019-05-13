@@ -57,6 +57,12 @@ nmap <leader>h :bprevious<CR>
 nmap <leader>bq :bp <BAR> bd #<CR>
 nmap <leader>bl :ls<CR>
 
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
+
 " Themes and Colors
 " https://github.com/morhetz/gruvbox
 "colorscheme vim-monokai-tasty
@@ -73,10 +79,9 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-" Access
+" Access and Misc
 syntax on
 set mouse=a
-set clipboard=unnamedplus
 set encoding=utf8
 set number
 set swapfile
