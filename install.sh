@@ -22,14 +22,29 @@ project(){
   tmux attach-session -t "$1"
 }
 
+_install_packages(){
+  cd $HOME
+  git clone https://github.com/nmatare/config.git
+  git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+}
+
 _install_config_files(){
-  cp .tmux.conf ~/.tmux.conf 
-  cp .vimrc ~/.vimrc
+  cp ~/config/.tmux.conf ~/.tmux.conf 
+  cp ~/config/.vimrc ~/.vimrc
   declare -f project >> ~/.bashrc
   echo "set -o vi" >> ~/.bashrc
 }
- 
+
+_clean_up_install(){
+  rm -rf config/
+}
+
+_install_packages
 _install_config_files 
+_clean_up_install
+
 "$@"
+rm -- "$0"
 
 # EOF
