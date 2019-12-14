@@ -35,12 +35,37 @@ filetype plugin indent on
 let g:pymode_python = 'python3'
 let g:vim_isort_python_version = 'python3'
 let g:pymode_rope_lookup_project = 0
+
+" Key Bindings and Mappings
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+set autoindent
+set nowrap
+set textwidth=79
+autocmd filetype python setlocal expandtab shiftwidth=4 softtabstop=4
+autocmd filetype r setlocal expandtab shiftwidth=2 softtabstop=2
+autocmd filetype sh setlocal expandtab shiftwidth=2 softtabstop=2
+
+let g:loaded_autosave = 1
+let g:autosave_timer = 60*1000*1 " 1min
+nmap <leader>T :enew<cr>
+nmap <leader>l :bnext<CR>
+nmap <leader>h :bprevious<CR>
+nmap <leader>bq :bp <BAR> bd #<CR>
+nmap <leader>bl :ls<CR>
+
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
+
+" Themes and Colors
 " https://github.com/morhetz/gruvbox
 "colorscheme vim-monokai-tasty
 "let g:vim_monokai_tasty_italic = 1
@@ -58,9 +83,14 @@ set softtabstop=4
 set autoindent
 set nowrap
 let python_highlight_all=1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+" Access and Misc
 syntax on
 set mouse=a
-set clipboard=unnamedplus
+set bs=2
 set encoding=utf8
 set number
 set swapfile
@@ -77,30 +107,25 @@ set smartcase
 set incsearch
 set cursorline
 set hlsearch
+
+" Tree Search
 autocmd vimenter * NERDTree
 let g:nerdtree_tabs_open_on_console_startup=1 
 let NERDTreeShowHidden=1
 set splitright
 set foldlevel=99
 set foldmethod=indent
-let g:vim_isort_map = '<C-i>' 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#fnamemod = ':t'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+
+" Tmux extensions
 nnoremap <C-p> :Files<CR>
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 let g:tmux_navigator_save_on_switch = 2
 map <Leader>r :VimuxPromptCommand<CR>
 map <Leader>rr :VimuxRunLastCommand<CR>
 map <Leader>tz :VimuxZoomRunner<CR>
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
-let g:loaded_autosave = 1
-let g:autosave_timer = 60*1000*1 " 1min
-nmap <leader>T :enew<cr>
-nmap <leader>l :bnext<CR>
-nmap <leader>h :bprevious<CR>
-nmap <leader>bq :bp <BAR> bd #<CR>
-nmap <leader>bl :ls<CR>
+
+" Jupyter Notebook
 autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
 autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
 autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
