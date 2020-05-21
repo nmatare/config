@@ -1,5 +1,7 @@
-export PYTHONBREAKPOINT="import ipdb; from Ipython import embed; embed(); ipdb.set_trace()"
-
+# Kubernetes short commands
 alias kgn="kubectl get nodes"
 alias kgp="kubectl get pods"
-alias kgl="kubectl logs $1 -f"
+alias kgl="kubectl logs -f"
+alias kxp="kubectl exec -it"
+alias kgl="kubectl logs $@"
+alias kpf="kubectl port-forward $@"
