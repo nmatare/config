@@ -6,27 +6,43 @@ project(){
     return
   fi
  
-  if [[ ! -d ~/projects/"$1" ]]; then
+  if [[ ! -d "~/projects/$1" ]]; then
     echo "Could not find the ~/projects/$1 directory"
     return
   fi
   
-  cd ~/projects/"$1"
-  tmux start-server
-  tmux new-session -d -s "$1" -n vim
-  tmux selectp -t 0
-  tmux send-keys "vim" C-m
+  cd "~/projects/$1"
 
-  tmux split -v -p 0
-  tmux select-window -t "$1"
-  tmux attach-session -t "$1"
+  tmux kill-server > /dev/null 2>&1
+
+  # Dual monitor setup
+  # Press ctrl-B then n to switch between main and sidecar
+
+  # First terminal create server and run in the anticpated main
+  gnome-terminal --hide-menubar -- bash -c """ \
+    tmux start-server \
+    && tmux new-session -s main -d \
+    && tmux selectp -t main \
+    && tmux send-keys vim C-m \
+    && tmux select-window -t main \
+    && tmux attach-session -t main
+  """ &
+
+  # Smaller monitor create a new window
+  gnome-terminal --hide-menubar -- bash -c """ \
+    tmux new-session -t main -s sidecar -d \
+    && tmux new-window \
+    && tmux select-window -t sidecar \
+    && tmux attach-session -t sidecar
+  """
 }
 
 _install_packages(){
-  cd $HOME
+  cd "${HOME}"
   git clone https://github.com/nmatare/config.git
   git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  pip install notedown
 }
 
 _install_config_files(){

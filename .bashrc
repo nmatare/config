@@ -5,3 +5,7 @@ alias kgl="kubectl logs -f"
 alias kxp="kubectl exec -it"
 alias kgl="kubectl logs $@"
 alias kpf="kubectl port-forward $@"
+
+# Helm short commands
+alias hi="helm install $@"
+alias hu="helm uninstall $@"
