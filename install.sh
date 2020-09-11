@@ -6,12 +6,12 @@ project(){
     return
   fi
  
-  if [[ ! -d "~/projects/$1" ]]; then
-    echo "Could not find the ~/projects/$1 directory"
+  if [[ ! -d "${HOME}/projects/$1" ]]; then
+    echo "Could not find the ${HOME}/projects/$1 directory"
     return
   fi
   
-  cd "~/projects/$1"
+  cd "${HOME}/projects/$1"
 
   tmux kill-server > /dev/null 2>&1
 
@@ -22,6 +22,7 @@ project(){
   gnome-terminal --hide-menubar -- bash -c """ \
     tmux start-server \
     && tmux new-session -s main -d \
+    && tmux new-window \
     && tmux selectp -t main \
     && tmux send-keys vim C-m \
     && tmux select-window -t main \
