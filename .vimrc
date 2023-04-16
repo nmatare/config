@@ -1,6 +1,5 @@
 " Short Description: .vimrc configuration file 
 " Maintainer: Nathan Matare
-" Contact: nathan.matare@gmail.com
 
 set nocompatible
 filetype off
